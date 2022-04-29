@@ -43,8 +43,56 @@ RSpec.describe ChangeNotifier do
               { team_id: 'does_not_exist', calendar_id: nil, messenger_id: nil },
             ],
           )
-        end.to raise_error StandardError, 'team has no fixture'
+        end.to raise_error UnprocessableException, 'team has no fixture'
       end
     end
+
+    it 'throws error when response has errors' do
+      VCR.use_cassette('response_with_errors') do
+        expect do
+          described_class.new(
+            [
+              { team_id: 'with_errors', calendar_id: nil, messenger_id: nil },
+            ],
+          )
+        end.to raise_error(
+          UnprocessableException,
+          'Bolt adapter map not found in container.',
+        )
+      end
+    end
+
+    it 'throws error if graphql query is broken' do
+      VCR.use_cassette('query_broken') do
+        expect do
+          described_class.new(
+            [
+              { team_id: 'query_broken', calendar_id: nil, messenger_id: nil },
+            ],
+          )
+        end.to raise_error(
+          UnprocessableException,
+          "Syntax Error: Cannot parse the unexpected character \"\\\\\".", # rubocop:disable Style/StringLiterals
+        )
+      end
+    end
+
+    # context 'with a timout error' do
+    #   before do
+    #     # allow(Net::HTTP).to receive(:start).and_raise(Net::ReadTimeout.new('Net::ReadTimeout))
+    #   end
+
+    #   it 'throws error due to timeout' do
+    #     expect do
+    #       described_class.new(
+    #         [
+    #           { team_id: 'timeout_error', calendar_id: nil, messenger_id: nil },
+    #         ],
+    #       )
+    #     end.to raise_error(
+    #       Net::ReadTimeout, 'Net::ReadTimeout'
+    #     )
+    #   end
+    # end
   end
 end

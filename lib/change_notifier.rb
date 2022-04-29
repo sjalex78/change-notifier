@@ -4,6 +4,16 @@ require 'net/http'
 require 'json'
 require 'uri'
 
+class UnprocessableException < StandardError
+  def initialize(error_json)
+    @messages = []
+    error_json['errors'].map do |error|
+      @messages << error['message']
+    end
+    super(@messages.join("\n"))
+  end
+end
+
 class ChangeNotifier
   def initialize(team_configs)
     @team_configs = team_configs
@@ -63,8 +73,10 @@ class ChangeNotifier
       http.request(req)
     end
     response_json = JSON.parse(res.body)
-    raise response_json['errors'].inspect if response_json.key?('errors')
+    raise UnprocessableException, response_json if response_json.key?('errors')
 
     response_json
+    # rescue SyntaxError => e
+    #   raise UnprocessableException.new(response_json)
   end
 end

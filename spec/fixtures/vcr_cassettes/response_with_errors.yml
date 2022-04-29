@@ -1,0 +1,105 @@
+---
+http_interactions:
+- request:
+    method: post
+    uri: https://api.playhq.com/graphql
+    body:
+      encoding: UTF-8
+      string: '{"operationName":"teamFixture","variables":{"teamID":"with_errors"},"query":"query
+        teamFixture($teamID: ID!) {\n    discoverTeamFixture(teamID: $teamID) {\n      id\n    name\n    provisionalDate\n    grade
+        {\n        id\n      name\n      season {\n          id\n        name\n        competition
+        {\n            id\n          name\n          organisation {\n              id\n            name\n            __typename\n          }\n          __typename\n        }\n        __typename\n      }\n      __typename\n    }\n    fixture
+        {\n        ...RoundFixtureFragment\n      __typename\n    }\n    __typename\n  }\n  tenantConfiguration
+        {\n      label\n    __typename\n  }\n}\n\nfragment RoundFixtureFragment on
+        DiscoverRoundFixture {\n    byes {\n      ...RoundFixtureDiscoverTeamFragment\n    __typename\n  }\n  games
+        {\n      id\n    alias\n    pool {\n        id\n      name\n      __typename\n    }\n    away
+        {\n        ...RoundFixtureTeamFragment\n      __typename\n    }\n    home
+        {\n        ...RoundFixtureTeamFragment\n      __typename\n    }\n    result
+        {\n        winner {\n          name\n        value\n        __typename\n      }\n      outcome
+        {\n          name\n        value\n        __typename\n      }\n      home
+        {\n          outcome {\n            name\n          value\n          __typename\n        }\n        statistics
+        {\n            count\n          type {\n              value\n            __typename\n          }\n          __typename\n        }\n        periods
+        {\n            period {\n              label\n            value\n            __typename\n          }\n          type\n          closureStatus\n          statistics
+        {\n              count\n            type {\n                label\n              value\n              __typename\n            }\n            __typename\n          }\n          __typename\n        }\n        __typename\n      }\n      away
+        {\n          outcome {\n            name\n          value\n          __typename\n        }\n        statistics
+        {\n            count\n          type {\n              value\n            __typename\n          }\n          __typename\n        }\n        periods
+        {\n            period {\n              label\n            value\n            __typename\n          }\n          type\n          closureStatus\n          statistics
+        {\n              count\n            type {\n                label\n              value\n              __typename\n            }\n            __typename\n          }\n          __typename\n        }\n        __typename\n      }\n      __typename\n    }\n    status
+        {\n        name\n      value\n      __typename\n    }\n    date\n    dates\n    allocation
+        {\n        time\n      dateTimeList {\n          date\n        time\n        __typename\n      }\n      court
+        {\n          id\n        name\n        abbreviatedName\n        latitude\n        longitude\n        venue
+        {\n            id\n          name\n          abbreviatedName\n          latitude\n          longitude\n          address\n          suburb\n          state\n          postcode\n          country\n          __typename\n        }\n        __typename\n      }\n      __typename\n    }\n    isStale\n    gameType
+        {\n        name\n      value\n      eScoringSettings {\n          dismissalsPerBatter\n        legalBallsPerOver\n        __typename\n      }\n      __typename\n    }\n    __typename\n  }\n  __typename\n}\n\nfragment
+        RoundFixtureDiscoverTeamFragment on DiscoverTeam {\n    id\n  name\n  logo
+        {\n      sizes {\n        url\n      dimensions {\n          width\n        height\n        __typename\n      }\n      __typename\n    }\n    __typename\n  }\n  season
+        {\n      id\n    name\n    competition {\n        id\n      name\n      __typename\n    }\n    __typename\n  }\n  organisation
+        {\n      id\n    name\n    type\n    __typename\n  }\n  __typename\n}\n\nfragment
+        RoundFixtureTeamFragment on DiscoverPossibleTeam {\n    ... on ProvisionalTeam
+        {\n      name\n    pool {\n        id\n      name\n      __typename\n    }\n    __typename\n  }\n  ...
+        on DiscoverTeam {\n      ...RoundFixtureDiscoverTeamFragment\n    __typename\n  }\n  __typename\n}\n"}'
+    headers:
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      User-Agent:
+      - Mozilla/5.0 (Macintosh; Intel Mac OS X 10_10_5) AppleWebKit/537.36 (KHTML,
+        like Gecko) Chrome/87.0.4280.88 Safari/537.36
+      Host:
+      - api.playhq.com
+      Content-Type:
+      - application/json
+      Origin:
+      - https://www.playhq.com
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Date:
+      - Fri, 29 Apr 2022 22:57:12 GMT
+      Content-Type:
+      - application/json; charset=utf-8
+      Content-Length:
+      - '2179'
+      Connection:
+      - keep-alive
+      Access-Control-Allow-Origin:
+      - https://www.playhq.com
+      Vary:
+      - Origin
+      Etag:
+      - W/"883-YREK8rwKeyVZNCNs1xUuNd4YOl0"
+      X-Envoy-Upstream-Service-Time:
+      - '35'
+      Server:
+      - envoy
+    body:
+      encoding: UTF-8
+      string: '{"errors":[{"message":"Bolt adapter map not found in container.","path":["discoverTeamFixture"],"extensions":{"code":"INTERNAL_SERVER_ERROR","serviceName":"rebound","query":"query($teamID:ID!){discoverTeamFixture(teamID:$teamID){id
+        name provisionalDate grade{id name season{id name competition{id name organisation{id
+        name __typename}__typename}__typename}__typename}fixture{byes{id name logo{sizes{url
+        dimensions{width height __typename}__typename}__typename}season{id name competition{id
+        name __typename}__typename}organisation{id name type __typename}__typename}games{id
+        alias pool{id name __typename}away{__typename ...on ProvisionalTeam{name pool{id
+        name __typename}__typename}...on DiscoverTeam{name __typename id logo{sizes{url
+        dimensions{width height __typename}__typename}__typename}season{id name competition{id
+        name __typename}__typename}organisation{id name type __typename}}}home{__typename
+        ...on ProvisionalTeam{name pool{id name __typename}__typename}...on DiscoverTeam{name
+        __typename id logo{sizes{url dimensions{width height __typename}__typename}__typename}season{id
+        name competition{id name __typename}__typename}organisation{id name type __typename}}}result{winner{name
+        value __typename}outcome{name value __typename}home{outcome{name value __typename}statistics{count
+        type{value __typename}__typename}periods{period{label value __typename}type
+        closureStatus statistics{count type{label value __typename}__typename}__typename}__typename}away{outcome{name
+        value __typename}statistics{count type{value __typename}__typename}periods{period{label
+        value __typename}type closureStatus statistics{count type{label value __typename}__typename}__typename}__typename}__typename}status{name
+        value __typename}date dates allocation{time dateTimeList{date time __typename}court{id
+        name abbreviatedName latitude longitude venue{id name abbreviatedName latitude
+        longitude address suburb state postcode country __typename}__typename}__typename}isStale
+        gameType{name value eScoringSettings{dismissalsPerBatter legalBallsPerOver
+        __typename}__typename}__typename}__typename}__typename}tenantConfiguration{label
+        __typename}}","variables":{"teamID":"with_errors"}}}],"data":null}
+
+        '
+  recorded_at: Fri, 29 Apr 2022 22:57:12 GMT
+recorded_with: VCR 6.1.0
