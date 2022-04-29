@@ -10,6 +10,11 @@ GREEN   = \033[0;32m
 YELLOW  = \033[0;33m
 NC      = \033[0m
 
+.PHONY: build
+build:
+	bundle exec rubocop -A
+	bundle exec rspec
+
 .PHONY: demo
 demo:
 	TEAM_ID=5712cf70 bin/demo_fetch.sh | jq
@@ -45,6 +50,7 @@ usage:
 	@echo
 	@echo "Hi ${GREEN}${USER}!${NC} Welcome to ${RED}${CURRENT_DIR}${NC}"
 	@echo
+	@echo "${YELLOW}make build${NC}          rspec and rubocop"
 	@echo "${YELLOW}make demo${NC}           run demo fetch"
 	@echo "${YELLOW}make demo-extract${NC}   run demo fetch and extract"
 	@echo
