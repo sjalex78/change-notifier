@@ -5,13 +5,14 @@ require 'change_notifier'
 RSpec.describe ChangeNotifier do
   describe 'integration spec' do
     it 'finds updates and notifies about them' do
-      VCR.use_cassette('team_005e3afb') do
+      VCR.use_cassette('team_5712cf70_and_005e3afb') do
         change_notifier = described_class.new(
           [
-            # { team_id: '5712cf70', calendar_id: nil, messenger_id: nil },
+            { team_id: '5712cf70', calendar_id: nil, messenger_id: nil },
             { team_id: '005e3afb', calendar_id: nil, messenger_id: nil },
           ],
         )
+        # expect(change_notifier.notifications).to eq([])
         expect(change_notifier.notifications).to match(
           array_including(
             {
