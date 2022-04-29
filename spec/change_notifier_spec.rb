@@ -33,5 +33,18 @@ RSpec.describe ChangeNotifier do
         )
       end
     end
+
+    it 'throws error if teams do not exist' do
+      VCR.use_cassette('team_does_not_exist') do
+        pending 'error not thrown when no fixture is returned'
+        expect do
+          described_class.new(
+            [
+              { team_id: 'does_not_exist', calendar_id: nil, messenger_id: nil },
+            ],
+          )
+        end.to raise_error StandardError, 'team has no fixture'
+      end
+    end
   end
 end
