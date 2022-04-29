@@ -1,0 +1,96 @@
+---
+http_interactions:
+- request:
+    method: post
+    uri: https://api.playhq.com/graphql
+    body:
+      encoding: UTF-8
+      string: '{"operationName":"teamFixture","variables":{"teamID":"005e3afb"},"query":"query
+        teamFixture($teamID: ID!) {\n    discoverTeamFixture(teamID: $teamID) {\n      id\n    name\n    provisionalDate\n    grade
+        {\n        id\n      name\n      season {\n          id\n        name\n        competition
+        {\n            id\n          name\n          organisation {\n              id\n            name\n            __typename\n          }\n          __typename\n        }\n        __typename\n      }\n      __typename\n    }\n    fixture
+        {\n        ...RoundFixtureFragment\n      __typename\n    }\n    __typename\n  }\n  tenantConfiguration
+        {\n      label\n    __typename\n  }\n}\n\nfragment RoundFixtureFragment on
+        DiscoverRoundFixture {\n    byes {\n      ...RoundFixtureDiscoverTeamFragment\n    __typename\n  }\n  games
+        {\n      id\n    alias\n    pool {\n        id\n      name\n      __typename\n    }\n    away
+        {\n        ...RoundFixtureTeamFragment\n      __typename\n    }\n    home
+        {\n        ...RoundFixtureTeamFragment\n      __typename\n    }\n    result
+        {\n        winner {\n          name\n        value\n        __typename\n      }\n      outcome
+        {\n          name\n        value\n        __typename\n      }\n      home
+        {\n          outcome {\n            name\n          value\n          __typename\n        }\n        statistics
+        {\n            count\n          type {\n              value\n            __typename\n          }\n          __typename\n        }\n        periods
+        {\n            period {\n              label\n            value\n            __typename\n          }\n          type\n          closureStatus\n          statistics
+        {\n              count\n            type {\n                label\n              value\n              __typename\n            }\n            __typename\n          }\n          __typename\n        }\n        __typename\n      }\n      away
+        {\n          outcome {\n            name\n          value\n          __typename\n        }\n        statistics
+        {\n            count\n          type {\n              value\n            __typename\n          }\n          __typename\n        }\n        periods
+        {\n            period {\n              label\n            value\n            __typename\n          }\n          type\n          closureStatus\n          statistics
+        {\n              count\n            type {\n                label\n              value\n              __typename\n            }\n            __typename\n          }\n          __typename\n        }\n        __typename\n      }\n      __typename\n    }\n    status
+        {\n        name\n      value\n      __typename\n    }\n    date\n    dates\n    allocation
+        {\n        time\n      dateTimeList {\n          date\n        time\n        __typename\n      }\n      court
+        {\n          id\n        name\n        abbreviatedName\n        latitude\n        longitude\n        venue
+        {\n            id\n          name\n          abbreviatedName\n          latitude\n          longitude\n          address\n          suburb\n          state\n          postcode\n          country\n          __typename\n        }\n        __typename\n      }\n      __typename\n    }\n    isStale\n    gameType
+        {\n        name\n      value\n      eScoringSettings {\n          dismissalsPerBatter\n        legalBallsPerOver\n        __typename\n      }\n      __typename\n    }\n    __typename\n  }\n  __typename\n}\n\nfragment
+        RoundFixtureDiscoverTeamFragment on DiscoverTeam {\n    id\n  name\n  logo
+        {\n      sizes {\n        url\n      dimensions {\n          width\n        height\n        __typename\n      }\n      __typename\n    }\n    __typename\n  }\n  season
+        {\n      id\n    name\n    competition {\n        id\n      name\n      __typename\n    }\n    __typename\n  }\n  organisation
+        {\n      id\n    name\n    type\n    __typename\n  }\n  __typename\n}\n\nfragment
+        RoundFixtureTeamFragment on DiscoverPossibleTeam {\n    ... on ProvisionalTeam
+        {\n      name\n    pool {\n        id\n      name\n      __typename\n    }\n    __typename\n  }\n  ...
+        on DiscoverTeam {\n      ...RoundFixtureDiscoverTeamFragment\n    __typename\n  }\n  __typename\n}\n"}'
+    headers:
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      User-Agent:
+      - Mozilla/5.0 (Macintosh; Intel Mac OS X 10_10_5) AppleWebKit/537.36 (KHTML,
+        like Gecko) Chrome/87.0.4280.88 Safari/537.36
+      Host:
+      - api.playhq.com
+      Content-Type:
+      - application/json
+      Origin:
+      - https://www.playhq.com
+      Tenant:
+      - basketball-victoria
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Date:
+      - Fri, 29 Apr 2022 09:23:35 GMT
+      Content-Type:
+      - application/json; charset=utf-8
+      Content-Length:
+      - '4277'
+      Connection:
+      - keep-alive
+      Access-Control-Allow-Origin:
+      - https://www.playhq.com
+      Vary:
+      - Origin
+      Etag:
+      - W/"10b5-oaY/P12glE16XO8zWRCoWYsJTJg"
+      X-Envoy-Upstream-Service-Time:
+      - '121'
+      Server:
+      - envoy
+    body:
+      encoding: UTF-8
+      string: '{"data":{"discoverTeamFixture":[{"id":"cf29cbbf","name":"Round 1","provisionalDate":"2022-04-30","grade":{"id":"e1d9aa5b","name":"Girls
+        U09 B Grading","season":{"id":"0ad6013c","name":"Winter 2022","competition":{"id":"66e291c2","name":"EDJBA","organisation":{"id":"0c8a84ea","name":"Eastern
+        Districts Junior Basketball Association (EDJBA)","__typename":"DiscoverOrganisation"},"__typename":"DiscoverCompetition"},"__typename":"DiscoverSeason"},"__typename":"DiscoverGrade"},"fixture":{"byes":[],"games":[{"id":"472eb2af","alias":null,"pool":null,"away":{"id":"9adae86b","name":"Eltham
+        U09 Girls 06","logo":{"sizes":[{"url":"https://assets.playhq.com/bv/2b434e/32_32_logo.png","dimensions":{"width":32,"height":32,"__typename":"ImageDimension"},"__typename":"ImageSource"},{"url":"https://assets.playhq.com/bv/2b434e/48_48_logo.png","dimensions":{"width":48,"height":48,"__typename":"ImageDimension"},"__typename":"ImageSource"},{"url":"https://assets.playhq.com/bv/2b434e/128_128_logo.png","dimensions":{"width":128,"height":128,"__typename":"ImageDimension"},"__typename":"ImageSource"},{"url":"https://assets.playhq.com/bv/2b434e/64_64_logo.png","dimensions":{"width":64,"height":64,"__typename":"ImageDimension"},"__typename":"ImageSource"},{"url":"https://assets.playhq.com/bv/2b434e/96_96_logo.png","dimensions":{"width":96,"height":96,"__typename":"ImageDimension"},"__typename":"ImageSource"},{"url":"https://assets.playhq.com/bv/2b434e/256_256_logo.png","dimensions":{"width":256,"height":256,"__typename":"ImageDimension"},"__typename":"ImageSource"}],"__typename":"Image"},"season":{"id":"0ad6013c","name":"Winter
+        2022","competition":{"id":"66e291c2","name":"EDJBA","__typename":"DiscoverCompetition"},"__typename":"DiscoverSeason"},"organisation":{"id":"2b434ebe","name":"Eltham
+        Wildcats Basketball Club","type":"CLUB","__typename":"DiscoverOrganisation"},"__typename":"DiscoverTeam"},"home":{"id":"005e3afb","name":"Collingwood
+        U09 Girls 02","logo":{"sizes":[{"url":"https://assets.playhq.com/bv/db55b5/32_32_logo.png","dimensions":{"width":32,"height":32,"__typename":"ImageDimension"},"__typename":"ImageSource"},{"url":"https://assets.playhq.com/bv/db55b5/48_48_logo.png","dimensions":{"width":48,"height":48,"__typename":"ImageDimension"},"__typename":"ImageSource"},{"url":"https://assets.playhq.com/bv/db55b5/128_128_logo.png","dimensions":{"width":128,"height":128,"__typename":"ImageDimension"},"__typename":"ImageSource"},{"url":"https://assets.playhq.com/bv/db55b5/64_64_logo.png","dimensions":{"width":64,"height":64,"__typename":"ImageDimension"},"__typename":"ImageSource"},{"url":"https://assets.playhq.com/bv/db55b5/96_96_logo.png","dimensions":{"width":96,"height":96,"__typename":"ImageDimension"},"__typename":"ImageSource"},{"url":"https://assets.playhq.com/bv/db55b5/256_256_logo.png","dimensions":{"width":256,"height":256,"__typename":"ImageDimension"},"__typename":"ImageSource"}],"__typename":"Image"},"season":{"id":"0ad6013c","name":"Winter
+        2022","competition":{"id":"66e291c2","name":"EDJBA","__typename":"DiscoverCompetition"},"__typename":"DiscoverSeason"},"organisation":{"id":"db55b5a7","name":"Collingwood
+        All Stars Basketball Club","type":"CLUB","__typename":"DiscoverOrganisation"},"__typename":"DiscoverTeam"},"result":null,"status":{"name":"Upcoming","value":"UPCOMING","__typename":"GameStatus"},"date":"2022-04-30","dates":["2022-04-30"],"allocation":{"time":"10:10:00","dateTimeList":[{"date":"2022-04-30","time":"10:10:00","__typename":"DateTime"}],"court":{"id":"0bf029e5-5751-483f-873b-c5ef4b8160f0","name":"Court
+        2","abbreviatedName":"Crt2","latitude":null,"longitude":null,"venue":{"id":"f3f7fcc3-8a37-4f99-8a71-4e4d9865b890","name":"Collingwood
+        College","abbreviatedName":"COLLC","latitude":"-37.80283","longitude":"144.99105","address":"10
+        McCutcheon Way","suburb":"Collingwood","state":"VIC","postcode":"3066","country":"Australia","__typename":"DiscoverVenue"},"__typename":"DiscoverCourt"},"__typename":"DiscoverAllocation"},"isStale":false,"gameType":{"name":"Basketball","value":"basketball","eScoringSettings":null,"__typename":"GameType"},"__typename":"DiscoverGame"}],"__typename":"DiscoverRoundFixture"},"__typename":"DiscoverRound"}],"tenantConfiguration":{"label":"bv","__typename":"TenantConfiguration"}}}
+
+        '
+  recorded_at: Fri, 29 Apr 2022 09:23:35 GMT
+recorded_with: VCR 6.1.0
