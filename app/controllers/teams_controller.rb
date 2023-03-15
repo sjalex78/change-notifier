@@ -5,5 +5,15 @@ class TeamsController < ApplicationController
   end
 
   def create
+    @team = Team.new(team_params)
+    @team.save
+    redirect_to "/", notice: "Team was successfully created."
+  end
+
+  private
+
+  # Only allow a list of trusted parameters through.
+  def team_params
+    params.require(:team).permit(:name, :url)
   end
 end

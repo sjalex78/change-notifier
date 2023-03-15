@@ -1,5 +1,10 @@
 # Development Log
 
+## March 19 2023
+
+- create an isolated controller test for create and save team happy path
+- create an isolated controller test for index
+
 ## March 17 2023
 
 - create team model using model using
