@@ -2,6 +2,12 @@
 
 ## March 15 2023
 
+- adding site prism
+
+```sh
+bundle add site_prism
+```
+
 - adding rspec and capybara testing suites
 
 ```sh

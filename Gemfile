@@ -64,6 +64,7 @@ group :test do
   gem "selenium-webdriver"
   gem "webdrivers"
   gem "rspec-example_steps"
+  gem "site_prism", "~> 3.7"
 end
 
 group :development, :test do
