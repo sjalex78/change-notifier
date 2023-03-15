@@ -1,5 +1,25 @@
 # Development Log
 
+## March 17 2023
+
+- test were not behaving as expected realising that the spike form March 16 has generated a table and required the DB to be dumped and remigrated, TODO: add to the make build script.
+
+```sh
+RAILS_ENV=test bin/rails db:drop db:create db:migrate
+```
+
+## March 16 2023
+
+- TODO: summarise evening changes
+
+- spike learning work to help create test with BDD and TDD
+  1. create a branch ```git checkout -b spike/scaffold_teams```
+  2. auto generate teams model with name and url ```sh
+    rails generate scaffold teams name:string url:string --force --no-helper
+    bin/rails db:migrate```
+  3. ignore the Rails/I18nLocaleTexts for rubocop update `.rubocop_local.yml`
+  4. create the feature test using binding.pry and IRB to build test functions noting you cna use the pending "message" as a holding point for passing test but acknowledging it is still broken
+
 ## March 15 2023
 
 - add landing page title
