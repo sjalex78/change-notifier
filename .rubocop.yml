@@ -26,3 +26,4 @@ AllCops:
   Exclude:
     - tmp/**/*
     - "vendor/**/*"
+    - "db/schema.rb"
