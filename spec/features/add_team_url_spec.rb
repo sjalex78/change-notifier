@@ -14,10 +14,8 @@ feature "add teams", :js do
     end
 
     When "they add a team" do
-      pending "waiting for add team form embedded on landing page"
-      # page.find("a", text: "Add team").click
-      # @add_team_form.submit!(name: "john", url: "the url")
       page.fill_in("Name", with: "John Rep")
+      pending "waiting for add team form embedded on landing page"
       page.fill_in("Url", with: "the-rep-url")
       page.find("[type=submit]").click
     end

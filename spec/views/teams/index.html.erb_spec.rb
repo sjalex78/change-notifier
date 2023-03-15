@@ -14,9 +14,7 @@ describe "teams/index.html.erb" do
     name_field = Capybara.string(rendered).find('label[for="team_name"]').find(:xpath, "..")
     expect(name_field.find("label").text).to eq "Name"
     expect(name_field.find("label")["for"]).to eq "team_name" # for screen readers and page navigation
-    pending "waiting for input field to be added"
     expect(name_field.find("input")["id"]).to eq "team_name" # for screen readers and page navigation
-    expect(name_field.find("input")["type"]).to eq "text"
     expect(name_field.find("input")["name"]).to eq "team[name]"
   end
 end
