@@ -17,4 +17,14 @@ describe "teams/index.html.erb" do
     expect(name_field.find("input")["id"]).to eq "team_name" # for screen readers and page navigation
     expect(name_field.find("input")["name"]).to eq "team[name]"
   end
+
+  it "input called url" do
+    render
+    url_field = Capybara.string(rendered).find('label[for="team_url"]').find(:xpath, "..")
+    expect(url_field.find("label").text).to eq "Url"
+    expect(url_field.find("label")["for"]).to eq "team_url" # for screen readers and page navigation
+    expect(url_field.find("input")["id"]).to eq "team_url" # for screen readers and page navigation
+    expect(url_field.find("input")["type"]).to eq "url"
+    expect(url_field.find("input")["name"]).to eq "team[url]"
+  end
 end
