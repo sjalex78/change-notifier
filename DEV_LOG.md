@@ -2,6 +2,12 @@
 
 ## March 17 2023
 
+- create team model using model using
+
+```sh
+rails generate model team name:string url:string --force
+```
+
 - test were not behaving as expected realising that the spike form March 16 has generated a table and required the DB to be dumped and remigrated, TODO: add to the make build script.
 
 ```sh
