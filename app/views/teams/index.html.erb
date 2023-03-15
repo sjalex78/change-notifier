@@ -3,7 +3,7 @@
 <p style="color: green"><%= notice %></p>
 
 <h1>Teams</h1>
-
+<%= render "form", team: @new_team %>
 <div id="teams">
   <% @teams.each do |team| %>
     <%= render team %>

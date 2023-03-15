@@ -1,5 +1,15 @@
 # Development Log
 
+## March 16 2023
+
+- spike learning work to help create test with BDD and TDD
+  1. create a branch ```git checkout -b spike/scaffold_teams```
+  2. auto generate teams model with name and url ```sh
+    rails generate scaffold teams name:string url:string --force --no-helper
+    bin/rails db:migrate```
+  3. ignore the Rails/I18nLocaleTexts for rubocop update `.rubocop_local.yml`
+  4. create the feature test using binding.pry and IRB to build test functions noting you cna use the pending "message" as a holding point for passing test but acknowledging it is still broken
+
 ## March 15 2023
 
 - add landing page title

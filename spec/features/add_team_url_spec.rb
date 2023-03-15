@@ -16,8 +16,8 @@ feature "add teams", :js do
 
     When "they add a team" do
       # landing_page.new_team.click
-      # pending "waiting for a new team button"
-      page.find("a", text: "New team").click
+      pending "waiting for add team form embedded on landing page"
+      # page.find("a", text: "Add team").click
       # @add_team_form.submit!(name: "john", url: "the url")
       page.fill_in("Name", with: "John Rep")
       page.fill_in("Url", with: "the-rep-url")
@@ -29,18 +29,18 @@ feature "add teams", :js do
     end
 
     When "they add 2 more teams" do
-      page.find("a", text: "Back to teams").click
-      page.find("a", text: "New team").click
+      # page.find("a", text: "Back to teams").click
+      # page.find("a", text: "Add team").click
       page.fill_in("Name", with: "Jenny Rep")
       page.fill_in("Url", with: "the-rep-2-url")
       page.find("[type=submit]").click
     end
 
-    And "they visit the main page" do
-      page.find("a", text: "Back to teams").click
-    end
+    # And "they visit the main page" do
+    #   page.find("a", text: "Back to teams").click
+    # end
 
-    Then "they see all 3 teams are added" do
+    Then "they see all 3 teams are added on the page as a list" do
       expect(
         page.find_all("#teams div").map(&:text),
       ).to eq [

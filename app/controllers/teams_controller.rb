@@ -6,6 +6,7 @@ class TeamsController < ApplicationController
   # GET /teams or /teams.json
   def index
     @teams = Team.all
+    @new_team = Team.new
   end
 
   # GET /teams/1 or /teams/1.json
@@ -27,7 +28,7 @@ class TeamsController < ApplicationController
 
     respond_to do |format|
       if @team.save
-        format.html { redirect_to team_url(@team), notice: "Team was successfully created." }
+        format.html { redirect_to teams_url, notice: "Team was successfully created." }
         format.json { render :show, status: :created, location: @team }
       else
         format.html { render :new, status: :unprocessable_entity }
