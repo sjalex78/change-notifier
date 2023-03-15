@@ -2,6 +2,24 @@
 
 ## March 19 2023
 
+- controller to show teams all implemented
+  - feature spec was false negative as it was "too quick" for render the array adding a `sleep(1)` slowed it down and passed the test but it was decided to add flash message expectation to "slow" the test to have it pass.
+
+- seems like controller testing is CRAP! but very like React testing so discovered the following error for a controller test
+  error:
+
+  ```
+  NoMethodError:
+   assigns has been extracted to a gem. To continue using it,
+   add `gem 'rails-controller-testing'` to your Gemfile.
+  ```
+
+  - fixed by adding gem
+
+  ```sh
+  bundle add rails-controller-testing
+  ```
+
 - create request spec to drive out controller passing correct data to view
 - view spec for the list of teams and implemented list view in index
 - create flash error messages from controller and request spec

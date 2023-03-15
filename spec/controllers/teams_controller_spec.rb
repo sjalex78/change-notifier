@@ -4,9 +4,15 @@ require "rails_helper"
 
 describe TeamsController, :isolated do
   describe "GET index" do
-    it "returns sucess" do
+    it "returns success" do
       get :index
       expect(response.status).to eq 200
+    end
+
+    it "variable called teams" do
+      allow(Team).to receive(:all).and_return([:team1, :team2])
+      get :index
+      expect(assigns(:teams)).to eq([:team1, :team2])
     end
   end
 

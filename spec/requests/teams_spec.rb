@@ -12,7 +12,6 @@ RSpec.describe "/teams" do
 
       it "returns all teams" do
         get root_path
-        pending "teams need to be rendered on index page"
         expect(body).to include "team a"
         expect(body).to include "team b"
       end

@@ -23,20 +23,20 @@ feature "add teams", :js do
       expect(page.find("[data-testid=flash]")).to have_text "Team was successfully created."
     end
 
-    When "they add 2 more teams" do
+    When "they add 1 more team succesfully" do
       page.fill_in("Name", with: "Jenny Rep")
       page.fill_in("Url", with: "http://the-rep-2-url")
       page.find("[type=submit]").click
+      expect(page).to have_content "Team was successfully created."
     end
 
-    Then "they see all 3 teams are added on the page as a list" do
-      pending "waiting listing of teams added"
+    Then "they see all 2 teams are added on the page as a list" do
       expect(
-        page.find_all("#teams div").map(&:text),
-      ).to eq [
-        "Name: John Rep\nUrl: http://the-rep-url",
-        "Name: Jenny Rep\nUrl: http://the-rep-2-url",
-      ]
+        page.find_all("[data-testid=teams-list] li[data-testid|=team]").map(&:text),
+      ).to eq([
+        "John Rep",
+        "Jenny Rep",
+      ])
     end
   end
 end
