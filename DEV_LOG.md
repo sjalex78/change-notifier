@@ -2,6 +2,8 @@
 
 ## March 19 2023
 
+- create flash error messages from controller and request spec
+- TODO: add view spec for flash messages
 - create an isolated controller test for create and save team happy path
 - create an isolated controller test for index
 

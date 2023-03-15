@@ -6,8 +6,12 @@ class TeamsController < ApplicationController
 
   def create
     @team = Team.new(team_params)
-    @team.save
-    redirect_to "/", notice: "Team was successfully created."
+    if @team.save
+      redirect_to "/", notice: "Team was successfully created."
+    else
+      flash.now[:alert] = @team.errors.full_messages.to_sentence
+      render :index, status: :unprocessable_entity
+    end
   end
 
   private

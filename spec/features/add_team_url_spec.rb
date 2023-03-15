@@ -16,27 +16,21 @@ feature "add teams", :js do
     When "they add a team" do
       page.fill_in("Name", with: "John Rep")
       page.fill_in("Url", with: "http://the-rep-url")
-      pending "waiting for submit button on landing page"
       page.find("[type=submit]").click
     end
 
     Then "they see the team was successfully added" do
-      expect(page.find_all("p").first.text).to eq "Team was successfully created."
+      expect(page.find("[data-testid=flash]")).to have_text "Team was successfully created."
     end
 
     When "they add 2 more teams" do
-      # page.find("a", text: "Back to teams").click
-      # page.find("a", text: "Add team").click
       page.fill_in("Name", with: "Jenny Rep")
       page.fill_in("Url", with: "http://the-rep-2-url")
       page.find("[type=submit]").click
     end
 
-    # And "they visit the main page" do
-    #   page.find("a", text: "Back to teams").click
-    # end
-
     Then "they see all 3 teams are added on the page as a list" do
+      pending "waiting listing of teams added"
       expect(
         page.find_all("#teams div").map(&:text),
       ).to eq [

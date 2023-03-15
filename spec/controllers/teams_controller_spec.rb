@@ -4,7 +4,6 @@ require "rails_helper"
 
 describe TeamsController, :isolated do
   describe "GET index" do
-    # render default template
     it "returns sucess" do
       get :index
       expect(response.status).to eq 200
@@ -45,13 +44,19 @@ describe TeamsController, :isolated do
     end
 
     context "with save failing" do
+      let(:error_stub) { instance_double(ActiveModel::Errors) }
+
       before do
         allow(team_stub).to receive(:save).and_return(false)
+        allow(team_stub).to receive(:errors).and_return(error_stub)
+        allow(error_stub).to receive(:full_messages).and_return(["error 1", "error 2"])
       end
 
-      it "renders the new page with error message and unprocessable exception"
-      # expect(response.status).to eq 422
-      # expect(controller.request.flash[:error]).to eq "some error"
+      it "renders the new page with error message and unprocessable exception" do
+        post :create, params: {team: {name: "the name", url: "the url"}}
+        expect(response.status).to eq 422
+        expect(flash[:alert]).to match("error 1 and error 2")
+      end
     end
   end
 end

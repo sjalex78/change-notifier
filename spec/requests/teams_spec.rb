@@ -15,5 +15,16 @@ RSpec.describe "/teams" do
         }.to change(Team, :count).by(1)
       end
     end
+
+    context "with invalid parameters" do
+      let(:parameters) {
+        {name: "Jane Rep Team", url: nil}
+      }
+
+      it "throws a warning for Url being blank" do
+        post teams_url, params: {team: parameters}
+        expect(body).to include "Url can&#39;t be blank"
+      end
+    end
   end
 end
