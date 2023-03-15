@@ -12,7 +12,7 @@ NC      = \033[0m
 
 .PHONY: build
 build:
-	bundle exec rubocop -A
+	bundle exec rubocop
 	bundle exec rspec
 
 .PHONY: demo
