@@ -53,10 +53,17 @@ gem "bootsnap", require: false
 # Use Active Storage variants [https://guides.rubyonrails.org/active_storage_overview.html#transforming-images]
 # gem "image_processing", "~> 1.2"
 
+# rspec and capybara test suite
 group :test do
   gem "rspec"
   gem "vcr", "~> 6.1"
   gem "webmock", "~> 3.14"
+  gem "capybara"
+  gem "rspec-rails"
+  gem "capybara-inline-screenshot"
+  gem "selenium-webdriver"
+  gem "webdrivers"
+  gem "rspec-example_steps"
 end
 
 group :development, :test do

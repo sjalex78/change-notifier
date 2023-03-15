@@ -2,6 +2,21 @@
 
 ## March 15 2023
 
+- adding rspec and capybara testing suites
+
+```sh
+bundle add \
+  capybara \
+  rspec-rails \
+  capybara-inline-screenshot \
+  selenium-webdriver \
+  webdrivers \
+  rspec-example_steps
+
+
+  rails generate rspec:install
+```
+
 - adding github build action via workflows yaml instructions
 
 - rubocop fix script and subsequently needed to ignore out .present? fix

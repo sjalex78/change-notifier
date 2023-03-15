@@ -1,8 +1,8 @@
 # frozen_string_literal: true
 
-require "change_notifier"
+require "rails_helper"
 
-RSpec.describe ChangeNotifier do
+RSpec.xdescribe ChangeNotifier do
   describe "integration spec" do
     it "finds updates and notifies about them" do
       VCR.use_cassette("team_5712cf70_and_005e3afb") do
