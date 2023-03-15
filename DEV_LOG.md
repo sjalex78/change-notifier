@@ -1,8 +1,20 @@
 # Development Log
 
 ## March 20 2023
+- [Spike]
+  - created a button click count in ana App.js component.
+  - error esbuilder loader for file set to "js" but need to be "jsx" to fix we add `--loader:.js=jsx` to the package.json "build"
+  - add VScode extension "ES7+ React/Redux/React-Native snippets"
+  - add components folder and app component
+  - add react and react-dom
 
-- [Spike] connect the react controller to the indexpage view
+sh```
+yarn add react react-dom
+```
+
+  - add app in the react controller page
+  - connect the react controller to the index page view
+
 - add jsbundling and esbuild using script
 
 sh```
