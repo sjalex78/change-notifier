@@ -39,4 +39,29 @@ describe "teams/index.html.erb" do
     form = Capybara.string(rendered).find("form")
     expect(form["action"]).to eq teams_path
   end
+
+  context "with no teams created" do
+    it "renders an empty list" do
+      render
+      list = Capybara.string(rendered).find("[data-testid=teams-list]")
+      expect(list.find("p").text).to eq "add a team!"
+    end
+  end
+
+  context "with teams created" do
+    before do
+      @teams = [
+        Team.new(name: "nameA", url: "http://urlA.com"),
+        Team.new(name: "nameB", url: "http://urlB.com"),
+      ]
+    end
+
+    it "renders list of added teams" do
+      render
+      list = Capybara.string(rendered).find_all("[data-testid=teams-list] li[data-testid|=team]")
+      expect(list.count).to eq 2
+      expect(list.first.text).to have_content "nameA"
+      expect(list.last.text).to have_content "nameB"
+    end
+  end
 end

@@ -11,3 +11,16 @@
 
   <%= form.submit "Add" %>
 <% end %>
+
+<ul data-testid="teams-list">
+  <%# use safe nativgation &. below added so only call empty of teams exists %>
+  <% if @teams&.present? %>
+    <% @teams.each do |team| %>
+      <li data-testid="team">
+        <%= team.name %>
+      </li>
+    <% end %>
+  <% else %>
+    <p>add a team!</p>
+  <% end %>
+</ul>
