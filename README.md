@@ -14,3 +14,13 @@
 ```sh
 make
 ```
+
+## Scripts
+
+```sh
+ bin/dev # run local server 3000
+```
+
+```sh
+ bin/rspec # run all tests
+```
