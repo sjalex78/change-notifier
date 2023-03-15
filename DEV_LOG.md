@@ -2,7 +2,15 @@
 
 ## March 20 2023
 
-- add stiumulus and react
+- [Spike] connect the react controller to the indexpage view
+- add jsbundling and esbuild using script
+
+sh```
+bundle add jsbundling-rails
+rails javascript:install:esbuild
+```
+
+- add stimulus and react
 
 sh```
 rails generate stimulus react

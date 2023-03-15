@@ -11,7 +11,7 @@
 
   <%= form.submit "Add" %>
 <% end %>
-
+<%= content_tag(:div, "text here!", id:"app", data:{ controller: "react"})%>
 <ul data-testid="teams-list">
   <%# use safe nativgation &. below added so only call empty of teams exists %>
   <% if @teams&.present? %>
