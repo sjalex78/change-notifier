@@ -2,6 +2,32 @@
 
 ## March 15 2023
 
+- attempt to fix GH Actions build error
+
+  - error as below
+
+  ```sh
+  Downloading debug-1.7.1 revealed dependencies not in the API or the lockfile
+  (irb (>= 1.5.0), reline (>= 0.3.1)).
+  Either installing with `--full-index` or running `bundle update debug` should
+  fix the problem.
+  Error: The process '/opt/hostedtoolcache/Ruby/3.2.1/x64/bin/bundle' failed with exit code 34
+  ```
+
+  - in the end reproduced it by uninstalling the gem and bundling the gem file
+
+  ```sh
+  gem uninstall debug
+  bundle
+
+    Downloading debug-1.7.1 revealed dependencies not in the API or the lockfile
+    (irb (>= 1.5.0), reline (>= 0.3.1)).
+    Either installing with `--full-index` or running `bundle update debug` should
+
+  bundle update debug
+  # which caused irb and reline changes in the Gemfile.lock
+  ```
+
 - adding site prism
 
 ```sh

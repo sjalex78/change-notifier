@@ -11,23 +11,39 @@ jobs:
     name: build
     runs-on: ubuntu-latest
 
+    # Service containers to run with `container-job`
+    services:
+      # Label used to access the service container
+      postgres:
+        # Docker Hub PostgreSQL image
+        image: postgres
+        # Provide the password for postgres
+        env:
+          POSTGRES_USER: postgres
+          POSTGRES_PASSWORD: postgres
+        options: >-
+          --health-cmd pg_isready
+          --health-interval 10s
+          --health-timeout 5s
+          --health-retries 5
+        ports:
+          # Maps tcp port 5432 on service container to the host
+          - 5432:5432
+    env:
+      DATABASE_URL: postgresql://postgres:postgres@localhost:5432/change_notifier_test
+
     steps:
       - uses: actions/checkout@v3
-
-      - name: dependencies setup
-        run: |
-          sudo apt-get -yqq install \
-            libpq-dev build-essential \
-            libcurl4-openssl-dev
 
       - name: setup ruby
         uses: ruby/setup-ruby@v1
         with:
           ruby-version: 3.2
           bundler-cache: true
-          working-directory: ./
 
       - name: make build
-        working-directory: ./
         run: |
+          bin/setup
+          yarn
+          yarn build:css
           make build

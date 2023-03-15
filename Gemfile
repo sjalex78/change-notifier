@@ -68,8 +68,6 @@ group :test do
 end
 
 group :development, :test do
-  # See https://guides.rubyonrails.org/debugging_rails_applications.html#debugging-with-the-debug-gem
-  gem "debug", platforms: %i[mri mingw x64_mingw]
   gem "pry"
 
   gem "rubocop-performance", require: false
@@ -82,6 +80,12 @@ end
 group :development do
   # Use console on exceptions pages [https://github.com/rails/web-console]
   gem "web-console"
+  # See https://guides.rubyonrails.org/debugging_rails_applications.html#debugging-with-the-debug-gem
+  # moved out of group :development, :test
+  # because in GitHub Actions
+  #   Downloading debug-1.7.1 revealed dependencies not in the API or the lockfile
+  #   (irb (>= 1.5.0), reline (>= 0.3.1)).
+  gem "debug", platforms: %i[mri mingw x64_mingw]
 
   # Add speed badges [https://github.com/MiniProfiler/rack-mini-profiler]
   # gem "rack-mini-profiler"
