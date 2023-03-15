@@ -1,6 +1,7 @@
 # frozen_string_literal: true
 
 Rails.application.routes.draw do
+  resources :teams, only: [:create]
   # a test only route used by spec/features/it_works_spec.rb
   get "test_root", to: "rails/welcome#index", as: "test_root_rails"
 
