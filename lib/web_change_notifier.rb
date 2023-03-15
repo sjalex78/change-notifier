@@ -14,7 +14,7 @@ class UnprocessableException < StandardError
   end
 end
 
-class ChangeNotifier
+class WebChangeNotifier
   def initialize(team_configs)
     @team_configs = team_configs
     @query = File.read(File.join(__dir__, "../config/team_fixture_query.txt"))
