@@ -2,6 +2,12 @@
 
 ## March 15 2023
 
+- add landing page title
+  1. added a spec spec/features/add_team_url_spec.rb for title
+  2. failure in running spec lead to adding "element" title to `spec/support/pages/landing.rb`
+  3. failure in no title lead me to adding h1 with title text to `.../teams/index.html.erb`
+  4. We have a title 👈🏼
+
 - added first page
   1. added a spec spec/features/add_team_url_spec.rb
   2. added a Page Object Model spec/support/pages/landing.rb to access the root_url ie "/"

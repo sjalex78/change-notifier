@@ -8,5 +8,9 @@ feature "add team url", :js do
       @landing_page = Pages::Landing.new
       @landing_page.load
     end
+    Then "there is a title" do
+      # expect(@landing_page).to have_title
+      expect(@landing_page.title.text).to eq "Add my basketball team"
+    end
   end
 end
