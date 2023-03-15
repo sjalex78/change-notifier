@@ -77,20 +77,20 @@ RSpec.describe ChangeNotifier do
       end
     end
 
-    context 'with a timout error' do
+    context "with a timout error" do
       before do
         allow(Net::HTTP).to receive(:start).and_raise(Net::ReadTimeout.new)
       end
 
-      it 'throws error due to timeout' do
+      it "throws error due to timeout" do
         expect do
-          described_class.new(
+          ChangeNotifier.new(
             [
-              { team_id: 'timeout_error', calendar_id: nil, messenger_id: nil },
+              {team_id: "timeout_error", calendar_id: nil, messenger_id: nil},
             ],
           )
         end.to raise_error(
-          Net::ReadTimeout, 'Net::ReadTimeout',
+          Net::ReadTimeout, "Net::ReadTimeout"
         )
       end
     end

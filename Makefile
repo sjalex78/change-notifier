@@ -15,6 +15,10 @@ build:
 	bundle exec rubocop
 	bundle exec rspec
 
+.PHONY: rubocop-fix
+rubocop-fix:
+	bundle exec rubocop -A
+
 .PHONY: demo
 demo:
 	TEAM_ID=5712cf70 bin/demo_fetch.sh | jq
