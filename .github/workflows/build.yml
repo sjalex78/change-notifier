@@ -14,6 +14,12 @@ jobs:
     steps:
       - uses: actions/checkout@v3
 
+      - name: dependencies setup
+        run: |
+          sudo apt-get -yqq install \
+            libpq-dev build-essential \
+            libcurl4-openssl-dev
+
       - name: setup ruby
         uses: ruby/setup-ruby@v1
         with:
