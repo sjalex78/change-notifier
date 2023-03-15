@@ -10,7 +10,7 @@ RSpec.describe "/teams" do
       }
 
       it "creates a new Team" do
-        pending "need create team model"
+        pending "need to create a team"
         expect {
           post teams_url, params: {team: parameters}
         }.to change(Team, :count).by(1)
