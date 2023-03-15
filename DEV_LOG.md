@@ -2,6 +2,8 @@
 
 ## March 19 2023
 
+- create request spec to drive out controller passing correct data to view
+- view spec for the list of teams and implemented list view in index
 - create flash error messages from controller and request spec
 - TODO: add view spec for flash messages
 - create an isolated controller test for create and save team happy path

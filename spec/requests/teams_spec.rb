@@ -3,6 +3,22 @@
 require "rails_helper"
 
 RSpec.describe "/teams" do
+  describe "GET /" do
+    context "with teams present" do
+      before do
+        Team.create!(name: "team a", url: "http://urla.com")
+        Team.create!(name: "team b", url: "http://urlb.com")
+      end
+
+      it "returns all teams" do
+        get root_path
+        pending "teams need to be rendered on index page"
+        expect(body).to include "team a"
+        expect(body).to include "team b"
+      end
+    end
+  end
+
   describe "POST /create" do
     context "with valid parameters" do
       let(:parameters) {
