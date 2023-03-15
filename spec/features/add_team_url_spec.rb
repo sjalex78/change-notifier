@@ -15,12 +15,12 @@ feature "add teams", :js do
 
     When "they add a team" do
       page.fill_in("Name", with: "John Rep")
-      page.fill_in("Url", with: "the-rep-url")
+      page.fill_in("Url", with: "http://the-rep-url")
+      pending "waiting for submit button on landing page"
       page.find("[type=submit]").click
     end
 
     Then "they see the team was successfully added" do
-      pending "waiting for submit button on landing page"
       expect(page.find_all("p").first.text).to eq "Team was successfully created."
     end
 
@@ -28,7 +28,7 @@ feature "add teams", :js do
       # page.find("a", text: "Back to teams").click
       # page.find("a", text: "Add team").click
       page.fill_in("Name", with: "Jenny Rep")
-      page.fill_in("Url", with: "the-rep-2-url")
+      page.fill_in("Url", with: "http://the-rep-2-url")
       page.find("[type=submit]").click
     end
 
@@ -40,8 +40,8 @@ feature "add teams", :js do
       expect(
         page.find_all("#teams div").map(&:text),
       ).to eq [
-        "Name: John Rep\nUrl: the-rep-url",
-        "Name: Jenny Rep\nUrl: the-rep-2-url",
+        "Name: John Rep\nUrl: http://the-rep-url",
+        "Name: Jenny Rep\nUrl: http://the-rep-2-url",
       ]
     end
   end
