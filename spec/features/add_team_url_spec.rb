@@ -16,6 +16,7 @@ feature "add teams", :js do
 
     When "they add a team" do
       # landing_page.new_team.click
+      # pending "waiting for a new team button"
       page.find("a", text: "New team").click
       # @add_team_form.submit!(name: "john", url: "the url")
       page.fill_in("Name", with: "John Rep")
