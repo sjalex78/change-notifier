@@ -1,5 +1,5 @@
 <h1>Add my basketball team</h1>
-<%= form_with(method: :post) do |form| %>
+<%= form_with url: "/teams" do |form| %>
   <div>
     <%= form.label :team_name, :Name, style: "display: block" %>
     <%= form.text_field :name, :id => 'team_name', :name => 'team[name]' %>

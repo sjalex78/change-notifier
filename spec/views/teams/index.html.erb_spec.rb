@@ -37,7 +37,6 @@ describe "teams/index.html.erb" do
   it "renders a form to add a team" do
     render
     form = Capybara.string(rendered).find("form")
-    pending "waiting for action to be added to form"
     expect(form["action"]).to eq teams_path
   end
 end
