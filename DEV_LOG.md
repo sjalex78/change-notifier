@@ -2,6 +2,12 @@
 
 ## March 15 2023
 
+- rubocop fix script and subsequently needed to ignore out .present? fix
+
+```sh
+bundle exec rubocop -A
+```
+
 - upgrade rubocop to use standard as per [article](https://evilmartians.com/chronicles/rubocoping-with-legacy-bring-your-ruby-code-up-to-standard), overrides are located in the `.rubocop_local.yml`
 
 - run server and updating git ignore which was missed in rails new

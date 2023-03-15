@@ -1,14 +1,14 @@
 # frozen_string_literal: true
 
-require 'net/http'
-require 'json'
-require 'uri'
+require "net/http"
+require "json"
+require "uri"
 
 class UnprocessableException < StandardError
   def initialize(error_json)
     @messages = []
-    error_json['errors'].map do |error|
-      @messages << error['message']
+    error_json["errors"].map do |error|
+      @messages << error["message"]
     end
     super(@messages.join("\n"))
   end
@@ -17,7 +17,7 @@ end
 class ChangeNotifier
   def initialize(team_configs)
     @team_configs = team_configs
-    @query = File.read(File.join(__dir__, '../config/team_fixture_query.txt'))
+    @query = File.read(File.join(__dir__, "../config/team_fixture_query.txt"))
     @query.gsub!('\\u0021', "\u0021") # special characters not processed correctly
     @result = []
     process
@@ -33,10 +33,10 @@ class ChangeNotifier
   def process_result(raw_result)
     {
       provisionalDate: raw_result.dig(
-        'data',
-        'discoverTeamFixture',
+        "data",
+        "discoverTeamFixture",
         0,
-        'provisionalDate',
+        "provisionalDate",
       ),
     }
   end
@@ -49,21 +49,21 @@ class ChangeNotifier
   end
 
   def fetch(team_id) # rubocop:disable Metrics/AbcSize,Metrics/MethodLength
-    uri = URI('https://api.playhq.com/graphql')
+    uri = URI("https://api.playhq.com/graphql")
     res = Net::HTTP.start(uri.host, uri.port, use_ssl: true) do |http|
       req = Net::HTTP::Post.new(uri)
-      req['content-type'] = 'application/json'
-      req['origin'] = 'https://www.playhq.com'
-      req['tenant'] = 'basketball-victoria'
-      req['user-agent'] = 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_10_5) '\
-                          'AppleWebKit/537.36 (KHTML, like Gecko) '\
-                          'Chrome/87.0.4280.88 '\
-                          'Safari/537.36'
+      req["content-type"] = "application/json"
+      req["origin"] = "https://www.playhq.com"
+      req["tenant"] = "basketball-victoria"
+      req["user-agent"] = "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_10_5) " \
+                          "AppleWebKit/537.36 (KHTML, like Gecko) " \
+                          "Chrome/87.0.4280.88 " \
+                          "Safari/537.36"
 
       # The body needs to be a JSON string.
       req.body = JSON[
         {
-          operationName: 'teamFixture',
+          operationName: "teamFixture",
           variables: {
             teamID: team_id,
           },
@@ -73,7 +73,7 @@ class ChangeNotifier
       http.request(req)
     end
     response_json = JSON.parse(res.body)
-    raise UnprocessableException, response_json if response_json.key?('errors')
+    raise UnprocessableException, response_json if response_json.key?("errors")
 
     response_json
     # rescue SyntaxError => e
