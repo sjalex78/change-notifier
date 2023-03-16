@@ -27,4 +27,10 @@ describe "teams/index.html.erb" do
     expect(url_field.find("input")["type"]).to eq "url"
     expect(url_field.find("input")["name"]).to eq "team[url]"
   end
+
+  it "renders a submit form button" do
+    render
+    submit = Capybara.string(rendered).find('input[type="submit"]')
+    expect(submit["value"]).to eq "Add"
+  end
 end

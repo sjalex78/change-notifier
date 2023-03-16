@@ -16,11 +16,11 @@ feature "add teams", :js do
     When "they add a team" do
       page.fill_in("Name", with: "John Rep")
       page.fill_in("Url", with: "the-rep-url")
-      pending "waiting for submit button on landing page"
       page.find("[type=submit]").click
     end
 
     Then "they see the team was successfully added" do
+      pending "waiting for submit button on landing page"
       expect(page.find_all("p").first.text).to eq "Team was successfully created."
     end
 
