@@ -33,4 +33,11 @@ describe "teams/index.html.erb" do
     submit = Capybara.string(rendered).find('input[type="submit"]')
     expect(submit["value"]).to eq "Add"
   end
+
+  it "renders a form to add a team" do
+    render
+    form = Capybara.string(rendered).find("form")
+    pending "waiting for route to create a team"
+    expect(form["action"]).to eq teams_path
+  end
 end
