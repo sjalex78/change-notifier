@@ -1,12 +1,13 @@
 <h1>Add my basketball team</h1>
-<form>
+<%= form_with(method: :post) do |form| %>
   <div>
-    <label for="team_name">Name</label>
-    <input id="team_name" name="team[name]"></input>
+    <%= form.label :team_name, :Name, style: "display: block" %>
+    <%= form.text_field :name, :id => 'team_name', :name => 'team[name]' %>
   </div>
   <div>
-    <label for="team_url">Url</label>
-    <input id="team_url" name="team[url]" type="url"></input>
+  <%= form.label :team_url, :Url, style: "display: block" %>
+    <%= form.text_field :team_url, :id => 'team_url', :type => 'url', :name => 'team[url]' %>
   </div>
-  <input type="submit" value="Add"/>
-</form>
+
+  <%= form.submit "Add" %>
+<% end %>
