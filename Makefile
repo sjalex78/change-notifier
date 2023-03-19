@@ -12,6 +12,7 @@ NC      = \033[0m
 
 .PHONY: build
 build:
+	bin/rails db:environment:set RAILS_ENV=test
 	RAILS_ENV=test bin/rails db:drop db:create db:migrate
 	bundle exec rubocop
 	bundle exec rspec
