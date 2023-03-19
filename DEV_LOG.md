@@ -1,5 +1,13 @@
 # Development Log
 
+## March 20 2023
+
+- add stiumulus and react
+
+sh```
+rails generate stimulus react
+```
+
 ## March 19 2023
 
 - controller to show teams all implemented
