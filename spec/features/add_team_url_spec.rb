@@ -23,6 +23,10 @@ feature "add teams", :js do
       expect(page.find("[data-testid=flash]")).to have_text "Team was successfully created."
     end
 
+    And "the flash message is cleared" do
+      page.refresh # currently only way to remove flash
+    end
+
     When "they add 1 more team succesfully" do
       page.fill_in("Name", with: "Jenny Rep")
       page.fill_in("Url", with: "http://the-rep-2-url")
@@ -32,7 +36,7 @@ feature "add teams", :js do
 
     Then "they see all 2 teams are added on the page as a list" do
       expect(
-        page.find_all("[data-testid=teams-list] li[data-testid|=team]").map(&:text),
+        page.find_all("[data-testid=team]").map(&:text),
       ).to eq([
         "John Rep",
         "Jenny Rep",

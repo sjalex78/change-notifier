@@ -11,7 +11,8 @@ describe "teams/index.html.erb" do
 
   it "input called name" do
     render
-    name_field = Capybara.string(rendered).find('label[for="team_name"]').find(:xpath, "..")
+    # name_field = Capybara.string(rendered).find('label[for="team_name"]').find(:xpath, "..")
+    name_field = Capybara.string(rendered).find('[data-testid="field-name"]')
     expect(name_field.find("label").text).to eq "Name"
     expect(name_field.find("label")["for"]).to eq "team_name" # for screen readers and page navigation
     expect(name_field.find("input")["id"]).to eq "team_name" # for screen readers and page navigation
@@ -20,7 +21,8 @@ describe "teams/index.html.erb" do
 
   it "input called url" do
     render
-    url_field = Capybara.string(rendered).find('label[for="team_url"]').find(:xpath, "..")
+    # url_field = Capybara.string(rendered).find('label[for="team_url"]').find(:xpath, "..")
+    url_field = Capybara.string(rendered).find('[data-testid="field-url"]')
     expect(url_field.find("label").text).to eq "Url"
     expect(url_field.find("label")["for"]).to eq "team_url" # for screen readers and page navigation
     expect(url_field.find("input")["id"]).to eq "team_url" # for screen readers and page navigation
@@ -58,7 +60,9 @@ describe "teams/index.html.erb" do
 
     it "renders list of added teams" do
       render
-      list = Capybara.string(rendered).find_all("[data-testid=teams-list] li[data-testid|=team]")
+      h2_heading = Capybara.string(rendered).find("h2")
+      expect(h2_heading.text).to eq "List of teams"
+      list = Capybara.string(rendered).find_all("[data-testid=team]")
       expect(list.count).to eq 2
       expect(list.first.text).to have_content "nameA"
       expect(list.last.text).to have_content "nameB"

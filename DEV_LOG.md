@@ -1,6 +1,10 @@
 # Development Log
 
 ## March 20 2023
+
+- [tailwind] aim to get tailwind rendered in app component
+- [tailwind] tailwind rendered in index page
+
 - [Spike]
   - created a button click count in ana App.js component.
   - error esbuilder loader for file set to "js" but need to be "jsx" to fix we add `--loader:.js=jsx` to the package.json "build"
