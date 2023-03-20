@@ -3,6 +3,14 @@
 ## March 20 2023
 
 - [tailwind] aim to get tailwind rendered in app component
+- [react] adding React testing environment
+
+sh```
+yarn add --dev @testing-library/react @testing-library/jest-dom
+yarn add --dev jest jest-environment-jsdom
+yarn add --dev eslint-plugin-jest
+```
+
 - [tailwind] tailwind rendered in index page
 
 - [Spike]
