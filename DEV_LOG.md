@@ -3,6 +3,14 @@
 
 ## March 21 2023
 
+- NEXT
+  - input component
+    - pass fieldName and type as data attributes in the erb
+    - pass both as the react component
+    - look like a rails input set attributes for id
+
+- add style to show invalid
+- set isValid field (extract json form data)
 - made a url input field which endpoint to call validation
 - questioning my sanity trying to code
 - found a handy wayt o visualise a react component "behaviour in the browser"
