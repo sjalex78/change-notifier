@@ -5,6 +5,9 @@ Rails.application.routes.draw do
     collection do
       get :is_url_unique
     end
+    member do
+      get :fetch_fixture
+    end
   end
   # a test only route used by spec/features/it_works_spec.rb
   get "test_root", to: "rails/welcome#index", as: "test_root_rails"

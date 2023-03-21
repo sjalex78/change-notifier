@@ -31,6 +31,9 @@ class WebChangeNotifier
   end
 
   def process_result(raw_result)
+    if raw_result.dig("data", "discoverTeamFixture").empty?
+      raise UnprocessableException.new("errors" => [{"message" => "team has no fixture"}])
+    end
     {
       provisionalDate: raw_result.dig(
         "data",
@@ -38,6 +41,28 @@ class WebChangeNotifier
         0,
         "provisionalDate",
       ),
+      rounds: raw_result.dig("data", "discoverTeamFixture").map do |fixture|
+        {
+          gradeName: fixture.dig("grade", "name"),
+          games: fixture.dig("fixture", "games").map do |game|
+            {
+              homeName: game.dig("home", "name"),
+              awayName: game.dig("away", "name"),
+              date: game.dig("date"),
+              time: game.dig("allocation", "time"),
+              court: game.dig("allocation", "court", "name"),
+              venueName: game.dig("allocation", "court", "venue", "name"),
+              venueAddress: [
+                game.dig("allocation", "court", "venue", "address"),
+                game.dig("allocation", "court", "venue", "suburb"),
+                game.dig("allocation", "court", "venue", "state"),
+              ].join("\n"),
+              latitude: game.dig("allocation", "court", "venue", "latitude"),
+              longitude: game.dig("allocation", "court", "venue", "longitude"),
+            }
+          end,
+        }
+      end,
     }
   end
 
