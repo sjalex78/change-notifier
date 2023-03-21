@@ -1,7 +1,6 @@
 import { Controller } from "@hotwired/stimulus";
 import React from "react";
 import { createRoot } from "react-dom/client";
-import App from "../components/App";
 import InputField from "../components/InputField";
 
 // Connects to data-controller="react"
@@ -23,12 +22,6 @@ export default class extends Controller {
       name={dataAttributes['name']}
       id={dataAttributes['id']}
       />);
-    } else {
-      const app = document.getElementById("app")
-      createRoot(app).render(<App />);
     }
-
-    // const inputField = document.getElementById("inputField")
-    // createRoot(inputField).render(<InputField />);
   }
 }
