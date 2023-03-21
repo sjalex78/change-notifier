@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 
 
-export default function InputField({value, path, fieldName, type}) {
+export default function InputField({value, path, name, type, id}) {
   const [inputValue, setInputValue ]= useState(value)
   const [isValid, setIsValid ]= useState(true)
   function handleChange(event) {
@@ -16,7 +16,9 @@ export default function InputField({value, path, fieldName, type}) {
   return (
     <div>
       <input
-        data-testid={`${fieldName}-input`}
+        name={name}
+        id={id}
+        data-testid={id}
         value={inputValue}
         onChange={handleChange}
         type={type}

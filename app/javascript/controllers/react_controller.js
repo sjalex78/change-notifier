@@ -16,7 +16,13 @@ export default class extends Controller {
     console.log(dataAttributes);
     console.log("React controller connected!");
     if(dataAttributes['component'] == 'input') {
-      createRoot(this.element).render(<InputField value={dataAttributes['value']} path={dataAttributes['path']} />);
+      createRoot(this.element).render(<InputField
+      value={dataAttributes['value']}
+      path={dataAttributes['path']}
+      type={dataAttributes['type']}
+      name={dataAttributes['name']}
+      id={dataAttributes['id']}
+      />);
     } else {
       const app = document.getElementById("app")
       createRoot(app).render(<App />);

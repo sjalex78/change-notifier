@@ -6,10 +6,12 @@ import InputField from "./InputField";
 
 describe("Input Field Validation", () => {
   it("renders", () => {
-    render(<InputField path="path" value="value" fieldName="fieldName" type="type" />);
-    const inputField = screen.getByTestId("fieldName-input");
+    render(<InputField path="path" value="value" name="name" type="type" id="id" />);
+    const inputField = screen.getByTestId("id");
     expect(inputField).toBeInTheDocument();
     expect(inputField).toHaveAttribute("type", "type");
     expect(inputField).toHaveValue("value");
+    expect(inputField).toHaveAttribute("name","name");
+    expect(inputField).toHaveAttribute("id","id");
   });
 })
