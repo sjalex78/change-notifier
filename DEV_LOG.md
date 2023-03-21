@@ -1,5 +1,16 @@
 # Development Log
 
+
+## March 21 2023
+
+- made a url input field which endpoint to call validation
+- questioning my sanity trying to code
+- found a handy wayt o visualise a react component "behaviour in the browser"
+
+```js
+    <pre>{JSON.stringify(value)}</pre>
+```
+
 ## March 20 2023
 
 - adding mocking for React testing

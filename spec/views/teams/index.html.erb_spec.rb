@@ -3,6 +3,10 @@
 require "rails_helper"
 
 describe "teams/index.html.erb" do
+  before do
+    @team = Team.new
+  end
+
   it "has a title" do
     render
     h1_heading = Capybara.string(rendered).find("h1")
@@ -10,7 +14,6 @@ describe "teams/index.html.erb" do
   end
 
   it "input called name" do
-    @team = Team.new
     render
     name_field = Capybara.string(rendered).find('[data-testid="field-name"]')
     expect(name_field.find("label").text).to eq "Name"
@@ -20,7 +23,6 @@ describe "teams/index.html.erb" do
   end
 
   it "input called url" do
-    @team = Team.new
     render
     url_field = Capybara.string(rendered).find('[data-testid="field-url"]')
     expect(url_field.find("label").text).to eq "Url"

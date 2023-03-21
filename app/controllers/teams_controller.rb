@@ -16,6 +16,10 @@ class TeamsController < ApplicationController
     end
   end
 
+  def is_url_unique
+    render json: {query: params[:q], unique: !Team.exists?(url: params[:q])}
+  end
+
   private
 
   # Only allow a list of trusted parameters through.
