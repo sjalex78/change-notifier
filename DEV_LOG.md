@@ -2,6 +2,14 @@
 
 ## March 20 2023
 
+- adding mocking for React testing
+  -adding a Mock service worker
+  - using an exisiting testing template for test [spike]
+
+```sh
+yarn add msw axious --dev
+```
+
 - [tailwind] aim to get tailwind rendered in app component
 - add React `yarn test` to make build script
 - [react] adding React testing environment
