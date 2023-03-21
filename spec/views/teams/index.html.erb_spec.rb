@@ -10,8 +10,8 @@ describe "teams/index.html.erb" do
   end
 
   it "input called name" do
+    @team = Team.new
     render
-    # name_field = Capybara.string(rendered).find('label[for="team_name"]').find(:xpath, "..")
     name_field = Capybara.string(rendered).find('[data-testid="field-name"]')
     expect(name_field.find("label").text).to eq "Name"
     expect(name_field.find("label")["for"]).to eq "team_name" # for screen readers and page navigation
@@ -20,8 +20,8 @@ describe "teams/index.html.erb" do
   end
 
   it "input called url" do
+    @team = Team.new
     render
-    # url_field = Capybara.string(rendered).find('label[for="team_url"]').find(:xpath, "..")
     url_field = Capybara.string(rendered).find('[data-testid="field-url"]')
     expect(url_field.find("label").text).to eq "Url"
     expect(url_field.find("label")["for"]).to eq "team_url" # for screen readers and page navigation
